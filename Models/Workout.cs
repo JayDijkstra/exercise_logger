@@ -8,7 +8,7 @@ namespace ExerciseLogger.Models
         public ICollection<Exercise> Exercises { get; set; } = new List<Exercise>();
     }
 
-        public enum MainFocus
+    public enum MainFocus
     {
         Legs,
         Back,
