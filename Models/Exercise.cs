@@ -6,6 +6,8 @@ namespace ExerciseLogger.Models
         public required string Name { get; set; }
         public string? Notes { get; set; }
         public ExerciseType ExerciseType { get; set; }
+        public int WorkoutId { get; set; }
+        public required Workout Workout { get; set; }
     }
 
     public enum ExerciseType
