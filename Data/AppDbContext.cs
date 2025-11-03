@@ -14,7 +14,8 @@ namespace ExerciseLogger.Data
 
             builder.Entity<Exercise>()
                 .HasDiscriminator<String>("ExcerciseType")
-                .HasValue<StrengthExercise>("Strength");
+                .HasValue<StrengthExercise>("Strength")
+                .HasValue<CardioExercise>("Cardio");
         }
     }
 }
