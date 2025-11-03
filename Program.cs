@@ -1,5 +1,7 @@
 using ExerciseLogger.Components;
 using ExerciseLogger.Data;
+using ExerciseLogger.Services;
+using ExerciseLogger.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,6 +15,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
+builder.Services.AddScoped<IWorkoutService, WorkoutService>();
 
 var app = builder.Build();
 
