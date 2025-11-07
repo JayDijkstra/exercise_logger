@@ -7,6 +7,9 @@ namespace ExerciseLogger.Data
     {
         public DbSet<Workout> Workouts { get; set; }
         public DbSet<Exercise> Exercises { get; set; }
+        public DbSet<StrengthExercise> StrengthExercises { get; set; }
+        public DbSet<CardioExercise> CardioExercises { get; set; }
+        public DbSet<ExerciseSet> ExerciseSets { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -16,6 +19,12 @@ namespace ExerciseLogger.Data
                 .HasDiscriminator<String>("ExcerciseType")
                 .HasValue<StrengthExercise>("Strength")
                 .HasValue<CardioExercise>("Cardio");
+
+            builder.Entity<StrengthExercise>()
+                .HasMany(e => e.Sets)
+                .WithOne(s => s.StrengthExercise)
+                .HasForeignKey(s => s.StrengthExerciseId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }
